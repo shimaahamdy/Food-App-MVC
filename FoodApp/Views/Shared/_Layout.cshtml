@@ -102,15 +102,21 @@
                       <a class="nav-link" href="book.html">Book Table</a>
                     </li>*@
 
-                    <li class="nav-item dropdown">
+                   @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                            {
+                                                            <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="bi bi-gear"></i> Management
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" asp-controller="Restaurant" asp-action="Index"><i class="bi bi-camera-reels"></i> Resturaurts</a>
-                            <a class="dropdown-item" asp-controller="Item" asp-action="Index"><i class="bi bi-headset"></i> Item</a>
+                            <a class="dropdown-item" asp-controller="Restaurant" asp-action="Index"><i class="bi @*bi-camera-reels*@"></i> Resturaurts</a>
+                            <a class="dropdown-item" asp-controller="Item" asp-action="Index"><i class="bi bi-list"></i> Item</a>
+                            <a class="dropdown-item" asp-controller="Account" asp-action="Users"><i class="bi bi-people"></i>Users</a>
                         </div>
                     </li>
+                                
+                            }
+
                     @*<li class="nav-item">
                         <partial name="_LoginPartial.cshtml"/>
                     </li>*@
@@ -120,7 +126,11 @@
                         @await Component.InvokeAsync("ShoppingCartSummary")
                     </ul> </a> </li>*@
 
+
+                    @*to understand*@
                     <partial name="_LoginPartial.cshtml"/>
+
+                    
 
 
                 </ul>

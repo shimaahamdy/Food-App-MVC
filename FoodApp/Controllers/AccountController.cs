@@ -88,6 +88,7 @@ namespace FoodApp.Controllers
 
             return View("RegisterCompleted");
         }
+      
 
         [HttpPost]
         public async Task<IActionResult> Logout()
@@ -100,5 +101,6 @@ namespace FoodApp.Controllers
         {
             return View();
         }
+    
     }
 }

@@ -11,9 +11,13 @@
 
 @*<h1>Index</h1>*@
 
-<p>
+ @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <p>
     <a asp-action="Create" class="btn btn-success">Create New</a>
 </p>
+}
+
 @*
 <table class="table">
     <thead>
@@ -108,12 +112,16 @@
                                 <a class="btn btn-outline-primary float-right m-1" asp-action="Details" asp-route-id="@item.Id">
                                     <i class="bi bi-eye-fill"></i> Show Details
                                 </a>
-                                <a class="btn btn-outline-primary float-right m-1" asp-action="Delete" asp-route-id="@item.Id">
-                                    <i class="bi bi-eye-fill"></i> Delete
-                                </a>
-                                <a class="btn btn-outline-primary float-right m-1" asp-action="Edit" asp-route-id="@item.Id">
-                                    <i class="bi bi-eye-fill"></i> Edit
-                                </a>
+
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                {
+                                    <a class="btn btn-outline-primary float-right m-1" asp-action="Delete" asp-route-id="@item.Id">
+                                        <i class="bi bi-eye-fill"></i> Delete
+                                    </a>
+                                    <a class="btn btn-outline-primary float-right m-1" asp-action="Edit" asp-route-id="@item.Id">
+                                        <i class="bi bi-eye-fill"></i> Edit
+                                    </a>
+                                }
                                 <a class="btn btn-success text-white" 
                                    asp-controller="Orders" 
                                    asp-action="AddToShoppingCart" 
